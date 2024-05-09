@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increment/Decrement</title>
+    <style>
+        body {
+            background-color: #131301;
+        }
+
+        .shoes-image {
+            height: 300px;
+            width: 300px;
+            display: block;
+            margin: 10px auto;
+            border-radius: 20px;
+
+        }
+
+        .product-card {
+            background-color: white;
+            width: 300px;
+            border-radius: 20px;
+            display: block;
+            margin: 5px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            height: 650px;
+
+        }
+
+
+        .card-body {
+            margin-left: 7px;
+        }
+
+        .product-description {
+            font-size: 18px;
+            margin-top: -10px;
+        }
+
+        .product-price {
+            font-size: 25px;
+            margin-left: 20px;
+            margin-top: -10px;
+        }
+
+        .btn-buy-now {
+            border: none;
+            color: black;
+            padding: 10px 25px;
+            display: block;
+            margin: 20px auto;
+            background-color: #016558;
+            border-radius: 40px;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+            height: 40px;
+
+        }
+        #show-quantity{
+            text-align: center;
+        }
+        #show-total{
+            text-align: center;
+        }
+
+        .btn-quantity {
+            height: 30px;
+            margin-top: 10px;
+        }
+
+        .quantity-btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -20px;
+
+        }
+
+        .quantity-text {
+            margin: auto 20px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .bill{
+            font-size: 20px;
+            margin-top: -10px;
+            margin-left: 20px;
+        
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-card">
+        <img src="shoes.webp" class="shoes-image" />
+
+        <div class="card-body">
+            <h1 class="product-title">White Sneakers</h1>
+            <p class="product-description">Casual sneakers are footwear designed for everyday comfort.</p>
+            <p class="product-price"><b>₹ 5999/-</b></p>
+
+            <p class=bill id="show-quantity"> 1 x 5999</p>
+            <p  class=bill id="show-total">Total: 5999</p>
+
+            <div class="quantity-btn-container">
+                <img src="minus.png" class="btn-quantity" onclick="dec()" />
+
+                <span class="quantity-text" id="quantity-text">1</span>
+
+                <img src="plus.png" class="btn-quantity" onclick="inc()" />
+            </div>
+            <button type="button" class="btn-buy-now"> Buy Now</button>
+        </div>
+    </div>
+
+    <script>
+        function inc() {
+            const quantityText = document.getElementById('quantity-text');
+            const showQuantity = document.getElementById('show-quantity');
+            const showTotal = document.getElementById('show-total');
+    
+            let quantity = parseInt(quantityText.innerText);
+    
+            if (quantity < 10) {
+                quantityText.innerText = ++quantity;
+            }
+            else {
+                alert("You can't add more than 10 items");
+            }
+            showQuantity.innerText = `${quantity} x 5999`;
+            showTotal.innerText = `Total: ${quantity * 5999}`;
+        }
+    
+        function dec() {
+            const quantityText = document.getElementById('quantity-text');
+            const showQuantity = document.getElementById('show-quantity');
+            const showTotal = document.getElementById('show-total');
+    
+            let quantity = parseInt(quantityText.innerText);
+    
+            if (quantity > 1) {
+                quantityText.innerText = --quantity;
+            }
+            else {
+                alert("You must have to add at least one item");
+            }
+            showQuantity.innerText = `${quantity} x 5999`;
+            showTotal.innerText = `Total: ${quantity * 5999}`;
+        }
+    </script>
+</body>
+</html>    
